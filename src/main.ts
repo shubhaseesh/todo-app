@@ -124,11 +124,13 @@ function renderPhoto(
     : ''
   const tilt = index % 2 === 0 ? ' photo-card--tilt-l' : ' photo-card--tilt-r'
   return `
-    <figure class="photo-card photo-card--polaroid${heroClass}${tilt}" data-reveal style="transition-delay:${index * 100}ms">
-      <div class="photo-card__frame">
-        <img class="photo-card__img" src="${escapeHtml(src)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="400" height="300" />
+    <figure class="photo-card photo-card--polaroid${heroClass}${tilt}" data-reveal style="--photo-i:${index};transition-delay:${index * 120}ms">
+      <div class="photo-card__inner">
+        <div class="photo-card__frame">
+          <img class="photo-card__img" src="${escapeHtml(src)}" alt="${escapeHtml(photo.alt)}" loading="lazy" width="400" height="300" />
+        </div>
+        ${caption}
       </div>
-      ${caption}
     </figure>
   `
 }
@@ -217,8 +219,13 @@ function renderApp(): void {
       <div class="section__inner section__inner--photos">
         <h2 class="section__title section__title--decorated" id="photos-title" lang="hi">${escapeHtml(content.sections.photos)}</h2>
         <div class="gallery-wrap">
-          <div class="gallery" role="list">${photosHtml}</div>
-          <p class="gallery-hint" lang="hi">Swipe karo — har photo tumhari yaad dilati hai</p>
+          <p class="gallery-hint" lang="hi">
+            <span class="gallery-hint__arrow" aria-hidden="true">→</span>
+            Pic Swipe karo
+          </p>
+          <div class="gallery" id="gallery" role="list">${photosHtml}</div>
+          <div class="gallery-dots" id="gallery-dots" aria-hidden="true"></div>
+          <div class="gallery-wrap__fade gallery-wrap__fade--right" id="gallery-fade" aria-hidden="true"></div>
         </div>
       </div>
     </section>
@@ -348,9 +355,54 @@ function initParallaxHearts(): void {
   )
 }
 
+function initGalleryMobile(): void {
+  const gallery = document.getElementById('gallery')
+  const dotsEl = document.getElementById('gallery-dots')
+  const fadeEl = document.getElementById('gallery-fade')
+  if (!gallery || !dotsEl) return
+
+  const cards = gallery.querySelectorAll<HTMLElement>('.photo-card')
+  if (cards.length <= 1) {
+    dotsEl.hidden = true
+    fadeEl?.remove()
+    return
+  }
+
+  dotsEl.innerHTML = Array.from(cards, (_, i) =>
+    `<span class="gallery-dots__dot${i === 0 ? ' is-active' : ''}" data-index="${i}"></span>`
+  ).join('')
+
+  const dots = dotsEl.querySelectorAll<HTMLElement>('.gallery-dots__dot')
+
+  const update = () => {
+    if (window.matchMedia('(min-width: 641px)').matches) return
+
+    const scrollLeft = gallery.scrollLeft
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth
+    let active = 0
+    let minDist = Infinity
+
+    cards.forEach((card, i) => {
+      const dist = Math.abs(card.offsetLeft - scrollLeft - (gallery.clientWidth - card.offsetWidth) / 2)
+      if (dist < minDist) {
+        minDist = dist
+        active = i
+      }
+    })
+
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === active))
+    fadeEl?.classList.toggle('is-hidden', scrollLeft >= maxScroll - 8)
+  }
+
+  gallery.addEventListener('scroll', update, { passive: true })
+  window.addEventListener('resize', update, { passive: true })
+  update()
+}
+
 renderApp()
 initIntro()
 initTypewriter()
 initScrollProgress()
 initScrollReveal()
 initParallaxHearts()
+initGalleryMobile()

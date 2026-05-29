@@ -15,7 +15,7 @@ export const content = {
   hero: {
     title: 'For Nidhi',
     tagline: 'Sirf tum',
-    subtitle: 'Shubhaseesh — tumse bahut pyaar',
+    subtitle: 'Shubhaseesh — tumse bahut pyaar karta hoon',
     scrollLabel: 'Scroll karo ↓',
   },
 
@@ -34,7 +34,7 @@ export const content = {
     closing: 'Aakhir mein',
   },
 
-  sorryEn: ['Choti si galatfehmi — maafi. Baaki sab pyaar hai.'],
+  sorryEn: ['Choti si galati — maafi. Baaki sab pyaar hai.'],
 
   sorryHi: ['Jo hua, maafi. Ab sirf yeh kehna tha — main tumse bahut pyaar karta hoon.'],
 

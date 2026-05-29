@@ -50,7 +50,7 @@ export const content = {
   quotes: [
     {
       lang: 'hi' as Lang,
-      text: 'Tum jahan sab theek lagta hai — sirf tum.',
+      text: 'Tum ho to sab theek lagta hai — sirf tum.',
       author: 'Shubhaseesh',
       featured: true,
     },

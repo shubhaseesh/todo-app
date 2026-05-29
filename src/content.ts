@@ -66,12 +66,6 @@ export const content = {
       author: 'Shubhaseesh',
       featured: false,
     },
-    {
-      lang: 'en' as Lang,
-      text: 'My heart chose you — again and again.',
-      author: '',
-      featured: false,
-    },
   ],
 
   photos: [

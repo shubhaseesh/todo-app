@@ -72,12 +72,6 @@ export const content = {
       author: '',
       featured: false,
     },
-    {
-      lang: 'hi' as Lang,
-      text: 'Padh ke samajh jaogi — kitna pyaar hai.',
-      author: 'Shubhaseesh',
-      featured: true,
-    },
   ],
 
   photos: [

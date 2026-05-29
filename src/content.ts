@@ -24,7 +24,7 @@ export const content = {
     'Bina tumhare dil adhura hai…',
   ],
 
-  ticker: ['♥ Nidhi', 'pyaar', 'Shubhaseesh', 'hamesha tumhari'],
+  ticker: ['♥ Nidhi', 'pyaar', 'Shubhaseesh', 'hamesha tumhara'],
 
   sections: {
     sorry: 'Ek maafi',

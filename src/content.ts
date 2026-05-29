@@ -34,7 +34,7 @@ export const content = {
     closing: 'Aakhir mein',
   },
 
-  sorryEn: ['Choti si galati — maafi. Baaki sab pyaar hai.'],
+  sorryEn: ['Choti si galati — maafi.'],
 
   sorryHi: ['Jo hua, maafi. Ab sirf yeh kehna tha — main tumse bahut pyaar karta hoon.'],
 

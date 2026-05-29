@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Open the URL shown in the terminal (usually `http://localhost:5173/sorry-name/`).
+Open the URL shown in the terminal (usually `http://localhost:5173/todo-app/`).
 
 ## Edit your message
 
@@ -46,14 +46,14 @@ Remove entries you do not need, or add more — the gallery adapts (grid on desk
 
 ## Deploy to GitHub Pages
 
-1. Push this repo to GitHub as **`sorry-name`** (must match `base` in [`vite.config.ts`](vite.config.ts)).
-2. In the repo: **Settings → Pages → Build and deployment → Source**: **GitHub Actions**.
+1. Push this repo to GitHub as **`todo-app`** (must match `base` in [`vite.config.ts`](vite.config.ts)).
+2. In the repo: **Settings → Pages → Build and deployment → Source**: **GitHub Actions** (not “Deploy from a branch”).
 3. Push to `main` (or `master`). The workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and publishes `dist/`.
-4. Your site URL: `https://<your-username>.github.io/sorry-name/`
+4. Your site URL: `https://shubhaseesh.github.io/todo-app/`
 
 ### Different repo name?
 
-If the GitHub repo name is not `sorry-name`, change `base` in `vite.config.ts`:
+If the GitHub repo name is not `todo-app`, change `base` in `vite.config.ts`:
 
 ```ts
 export default defineConfig({

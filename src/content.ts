@@ -105,7 +105,7 @@ export const content = {
   ],
 
   closing: {
-    lineHi: 'Nidhi, main tumse be-intehaan pyaar karta hoon. Sochte rehna… kitna.',
+    lineHi: 'Nidhi, main tumse be-intehaan pyaar karta hoon.',
     lineEn: 'Always yours in heart.',
     signature: 'Tumhara,',
     signatory: 'Shubhaseesh',
